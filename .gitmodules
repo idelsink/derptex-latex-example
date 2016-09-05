@@ -1,0 +1,3 @@
+[submodule "derptex-latex"]
+	path = derptex-latex
+	url = https://github.com/idelsink/derptex-latex.git
