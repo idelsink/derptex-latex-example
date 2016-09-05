@@ -1,4 +1,4 @@
-# DerpTeX-LaTeX example
+# DerpTeX-LaTeX example [![Build Status](https://travis-ci.org/idelsink/derptex-latex-example.svg?branch=master)](https://travis-ci.org/idelsink/derptex-latex-example)
 
 In this repository the [DerpTeX-LaTeX](https://github.com/idelsink/derptex-latex) usage is demonstrated.
 
