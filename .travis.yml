@@ -1,0 +1,16 @@
+# Ubuntu Trusty support
+dist: trusty
+
+os:
+    - linux
+
+notifications:
+    email:
+        on_success: never
+        on_failure: always
+
+install:
+    - sudo ./derptex-latex/install_latex.sh YES
+
+script:
+    - make all
