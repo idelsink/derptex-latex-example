@@ -11,7 +11,7 @@ notifications:
 
 install:
     - sudo apt-get -qq update
-    - sudo apt-get install -qq readlink
+    - sudo apt-get install -qq realpath
     - sudo ./derptex-latex/install_latex.sh YES
 
 script:
