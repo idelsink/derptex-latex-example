@@ -1,6 +1,6 @@
 # makefile for all documentation
 # ignore the following directories:
-ignore = derptex-latex shared
+ignore = derptex-latex shared output
 
 ##################################
 # DerpTex-LaTeX example makefile #
@@ -14,16 +14,19 @@ all:$(directories)
 
 # make specific target
 $(directories):
-	cd $@ && make
+	$(MAKE) -C $@
 .PHONY: $(directories)
 
+ifdef O
+OUT=$(shell realpath $(O))
+endif
 copy:
-	$(foreach dir,$(directories),cd $(dir) && make copy OUT=../$(OUT))
+	$(foreach dir,$(directories),$(MAKE) -C $(dir) copy OUT=$(OUT) && ) true
 
 # clean build folder
 clean:
-	$(foreach dir,$(directories),cd $(dir) && make clean)
+	$(foreach dir,$(directories),$(MAKE) -C $(dir) clean && ) true
 
 # purge build folder
 purge:
-	$(foreach dir,$(directories),cd $(dir) && make purge)
+	$(foreach dir,$(directories),$(MAKE) -C $(dir) purge && ) true
