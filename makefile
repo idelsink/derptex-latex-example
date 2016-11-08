@@ -17,6 +17,9 @@ $(directories):
 	cd $@ && make
 .PHONY: $(directories)
 
+copy:
+	$(foreach dir,$(directories),cd $(dir) && make copy OUT=../$(OUT))
+
 # clean build folder
 clean:
 	$(foreach dir,$(directories),cd $(dir) && make clean)
