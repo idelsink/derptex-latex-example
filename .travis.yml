@@ -10,6 +10,8 @@ notifications:
         on_failure: always
 
 install:
+    - sudo apt-get -qq update
+    - sudo apt-get install -qq readlink
     - sudo ./derptex-latex/install_latex.sh YES
 
 script:
