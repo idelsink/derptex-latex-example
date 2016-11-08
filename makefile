@@ -1,23 +1,26 @@
 # makefile for all documentation
+# ignore the following directories:
+ignore = derptex-latex shared
 
-examplereport:
-	cd example_report && make
+##################################
+# DerpTex-LaTeX example makefile #
+##################################
+# only edit if you know what you're doing; the point of no return
+directories=$(shell find . -maxdepth 1 -type d -not -name ".*" -printf '%P\n')
+directories := $(filter-out $(ignore),$(directories))
 
-# nextdocument:
-	# cd dir && make
+# make all
+all:$(directories)
 
-# Clean build dir
+# make specific target
+$(directories):
+	cd $@ && make
+.PHONY: $(directories)
+
+# clean build folder
 clean:
-	cd ./example_report/ && make clean # example report
-	# next document
+	$(foreach dir,$(directories),cd $(dir) && make clean)
 
-# Purge build dir
+# purge build folder
 purge:
-	cd ./example_report/ && make purge # example report
-	# next document
-
-# Make all
-all : examplereport
-# add all targets
-
-.PHONY : all
+	$(foreach dir,$(directories),cd $(dir) && make purge)
