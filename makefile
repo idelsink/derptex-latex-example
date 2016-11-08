@@ -17,8 +17,9 @@ $(directories):
 	$(MAKE) -C $@
 .PHONY: $(directories)
 
-ifdef O
-OUT=$(shell realpath $(O))
+ifdef OUT
+tmp_OUT := $(OUT)
+override OUT=$(shell realpath $(tmp_OUT))
 endif
 copy:
 	$(foreach dir,$(directories),$(MAKE) -C $(dir) copy OUT=$(OUT) && ) true
