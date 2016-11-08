@@ -19,7 +19,7 @@ $(directories):
 
 ifdef OUT
 tmp_OUT := $(OUT)
-override OUT=$(shell realpath $(tmp_OUT))
+override OUT=$(shell readlink -m $(tmp_OUT))
 endif
 copy:
 	$(foreach dir,$(directories),$(MAKE) -C $(dir) copy OUT=$(OUT) && ) true
