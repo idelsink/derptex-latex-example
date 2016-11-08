@@ -1,33 +1,61 @@
-# makefile for documentation
-LATEX_PDF=xelatex
-LATEXFLAGS=-enable-write18
-BIBTEX=biber
+# configuration, edit these values if necessary
+DerpTeX_LaTeX_dir=../derptex-latex
+build_dir=build
+tex_src=./main.tex
+bipp_src=../shared/references.bib
+document_name=$(shell basename $(shell pwd))
+
+##########################
+# DerpTex-LaTeX makefile #
+##########################
+# only edit if you know what you're doing; the point of no return
+TEX_ENGINE=xelatex
+TEX_ENGINE_FLAGS=-enable-write18 -halt-on-error -file-line-error
+BIPP=biber # Bibliography Information Processing Program
 RM=rm -f
-BUILD_DIR=build
-COPY_BIB=echo $(bibtex_src) | xargs cp -t $(BUILD_DIR)
-CHECK_BUILD=if [ ! -d "./$(BUILD_DIR)" ];then	\
-				mkdir $(BUILD_DIR);     		\
-			fi
-# directory to the DerpTeX-LaTeX repository
-DERPTEX_LATEX_DIR=../derptex-latex
-latex_src=./main.tex
-bibtex_src=./../shared/references.bib
+COPY_BIPP_SRC=echo $(bipp_src) | xargs cp -t $(build_dir)
+CHECK_BUILD=if [ ! -d "./$(build_dir)" ];then mkdir $(build_dir); fi
 
-# Generate PDF
-document_name=document
-latex_to_pdf=export TEXMFHOME=.:$(DERPTEX_LATEX_DIR):$(TEXMFHOME); $(LATEX_PDF) $(LATEXFLAGS) -output-directory=$(BUILD_DIR) -jobname=$(document_name) $(latex_src)
-documentation:$(latex_src)
-			  $(CHECK_BUILD)
-			  $(COPY_BIB)
-			  $(latex_to_pdf)
-			  cd $(BUILD_DIR)/;$(BIBTEX) $(document_name).bcf
-			  $(latex_to_pdf)
-			  $(latex_to_pdf)
 
-# Clean build dir
+tex_to_pdf=export TEXMFHOME=.:$(DerpTeX_LaTeX_dir):$(TEXMFHOME); $(TEX_ENGINE) $(TEX_ENGINE_FLAGS) -output-directory=$(build_dir) -jobname=$(document_name) $(tex_src)
+# generate PDF
+pdf:$(tex_src)
+	$(CHECK_BUILD)
+	$(COPY_BIPP_SRC)
+	$(tex_to_pdf)
+	cd $(build_dir)/;$(BIPP) $(document_name).bcf
+	$(tex_to_pdf)
+	$(tex_to_pdf)
+
+# copy over files (e.g. pdfs etc)
+# OUT = output directory
+# EXT = extension to copy over
+EXT=pdf
+.PHONY: copy
+copy:
+ifndef OUT
+	$(error OUT is not defined.)
+endif
+ifeq ($(OUT), )
+	$(error OUT is defined, but is empty.)
+endif
+ifndef EXT
+	$(error EXT is not defined.)
+endif
+ifeq ($(EXT), )
+	$(error EXT is defined, but is empty.)
+endif
+	mkdir -p ${OUT}
+ifneq ($(wildcard $(build_dir)/$(document_name).$(EXT)),)
+	cp $(build_dir)/$(document_name).$(EXT) $(OUT)
+else
+	$(error $(build_dir)/$(document_name).$(EXT) not found.)
+endif
+
+# clean build dir
 clean:
-	$(RM) ./$(BUILD_DIR)/*
+	$(RM) ./$(build_dir)/*
 
-# Purge build dir
+# purge build dir
 purge:
-	$(RM)r ./$(BUILD_DIR)
+	$(RM) -r ./$(build_dir)
