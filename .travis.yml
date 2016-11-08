@@ -14,3 +14,5 @@ install:
 
 script:
     - make all
+    - make copy OUT=~/DerpTeX-LaTeX-out/
+    - ls -l ~/DerpTeX-LaTeX-out/
