@@ -10,6 +10,7 @@ services:
 
 env:
     matrix:
+        - DISTRO=fedora23
         - DISTRO=fedora24
     global:
         - IMAGE="idelsink/mexdown"
