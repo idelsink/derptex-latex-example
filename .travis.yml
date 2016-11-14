@@ -14,14 +14,12 @@ env:
     global:
         - IMAGE="idelsink/derptex-latex"
         - NAME="derptex-latex"
-        - PULL="docker pull $IMAGE"
-        - RUN="docker run --name $NAME -it -d $IMAGE bash"
         - EXEC="docker exec $NAME"
 
 before_install:
-    - $PULL:$DISTRO
-    - $RUN
-    - export WORKDIR=$($RUN bash -c 'echo $PWD')
+    - docker pull $IMAGE:$DISTRO
+    - docker run --name $NAME -it -d $IMAGE:$DISTRO bash
+    - export WORKDIR=$($EXEC bash -c 'echo $PWD')
     - docker cp ./ $NAME:$WORKDIR
 
 install:
