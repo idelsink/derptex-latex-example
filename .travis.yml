@@ -12,14 +12,14 @@ env:
     matrix:
         - DISTRO=fedora24
     global:
-        - IMAGE="idelsink/derptex-latex:$DISTRO"
-        - NAME="$DISTRO-latex"
+        - IMAGE="idelsink/derptex-latex"
+        - NAME="derptex-latex"
         - PULL="docker pull $IMAGE"
         - RUN="docker run --name $NAME -it -d $IMAGE bash"
         - EXEC="docker exec $NAME"
 
 before_install:
-    - $PULL
+    - $PULL:$DISTRO
     - $RUN
     - export WORKDIR=$($RUN bash -c 'echo $PWD')
     - docker cp ./ $NAME:$WORKDIR
