@@ -12,8 +12,8 @@ env:
     matrix:
         - DISTRO=fedora24
     global:
-        - IMAGE="idelsink/derptex-latex"
-        - NAME="derptex-latex"
+        - IMAGE="idelsink/mexdown"
+        - NAME="mexdown"
         - EXEC="docker exec $NAME"
 
 before_install:
@@ -24,9 +24,9 @@ before_install:
 
 install:
     - $EXEC sudo dnf -y update
-    - $EXEC sudo ./derptex-latex/install_latex.sh YES
+    - $EXEC sudo ./mexdown/install_latex.sh YES
 
 script:
     - $EXEC make all
-    - $EXEC make copy OUT=DerpTeX-LaTeX-out
-    - $EXEC ls -l DerpTeX-LaTeX-out
+    - $EXEC make copy OUT=mexdown-out
+    - $EXEC ls -l mexdown-out

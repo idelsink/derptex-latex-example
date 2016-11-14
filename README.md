@@ -1,10 +1,10 @@
-# DerpTeX-LaTeX example [![Build Status](https://travis-ci.org/idelsink/derptex-latex-example.svg?branch=master)](https://travis-ci.org/idelsink/derptex-latex-example)
+# mexdown example [![Build Status](https://travis-ci.org/idelsink/mexdown-example.svg?branch=master)](https://travis-ci.org/idelsink/mexdown-example)
 
-In this repository the [DerpTeX-LaTeX](https://github.com/idelsink/derptex-latex) usage is demonstrated.
+In this repository the [mexdown](https://github.com/idelsink/mexdown) usage is demonstrated.
 
 ## steps for: *report*
 
--   put the [DerpTeX-LaTeX](https://github.com/idelsink/derptex-latex) folder somewhere. (submodule or subdirectory)
+-   put the [mexdown](https://github.com/idelsink/mexdown) folder somewhere. (submodule or subdirectory)
 -   setup a main makefile, what folders shoeld be ignored?
 -   write your documents!
 

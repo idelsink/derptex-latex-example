@@ -1,10 +1,10 @@
 # makefile for all documentation
 # ignore the following directories:
-ignore = derptex-latex shared output
+ignore = mexdown shared output
 
-##################################
-# DerpTex-LaTeX example makefile #
-##################################
+###########################
+# mexdown global makefile #
+###########################
 # only edit if you know what you're doing; the point of no return
 directories=$(shell find . -maxdepth 1 -type d -not -name ".*" -printf '%P\n')
 directories := $(filter-out $(ignore),$(directories))
