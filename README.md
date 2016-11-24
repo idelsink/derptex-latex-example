@@ -5,7 +5,7 @@ In this repository the [mexdown](https://github.com/idelsink/mexdown) usage is d
 ## steps for: *report*
 
 -   put the [mexdown](https://github.com/idelsink/mexdown) folder somewhere. (submodule or subdirectory)
--   setup a main makefile, what folders shoeld be ignored?
+-   setup a main makefile, what folders should be ignored?
 -   write your documents!
 
 *this list is not all complete, but this is what I had to do.
