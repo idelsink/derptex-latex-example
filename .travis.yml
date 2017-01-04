@@ -1,9 +1,12 @@
+sudo: required
+
+git:
+    depth: 1
+
 notifications:
     email:
         on_success: never
         on_failure: always
-
-sudo: required
 
 services:
   - docker
@@ -12,6 +15,7 @@ env:
     matrix:
         - DISTRO=fedora23
         - DISTRO=fedora24
+        - DISTRO=fedora25
     global:
         - IMAGE="idelsink/mexdown"
         - NAME="mexdown"
@@ -19,12 +23,11 @@ env:
 
 before_install:
     - docker pull $IMAGE:$DISTRO
-    - docker run --name $NAME -it -d $IMAGE:$DISTRO bash
-    - export WORKDIR=$($EXEC bash -c 'echo $PWD')
+    - docker run --name $NAME -it -d $IMAGE:$DISTRO sh
+    - export WORKDIR=$($EXEC pwd)
     - docker cp ./ $NAME:$WORKDIR
 
 install:
-    - $EXEC sudo dnf -y update
     - $EXEC sudo ./mexdown/install_latex.sh YES
 
 script:
