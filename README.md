@@ -1,15 +1,8 @@
-# mexdown example [![Build Status](https://travis-ci.org/idelsink/mexdown-example.svg?branch=master)](https://travis-ci.org/idelsink/mexdown-example)
+# mexdown example
+[![Build Status](https://travis-ci.org/idelsink/mexdown-example.svg?branch=master)](https://travis-ci.org/idelsink/mexdown-example)
+[![Run Status](https://api.shippable.com/projects/57f173da5738e10e003aa05f/badge?branch=master)](https://app.shippable.com/projects/57f173da5738e10e003aa05f)
 
 In this repository the [mexdown](https://github.com/idelsink/mexdown) usage is demonstrated.
-
-## steps for: *report*
-
--   put the [mexdown](https://github.com/idelsink/mexdown) folder somewhere. (submodule or subdirectory)
--   setup a main makefile, what folders should be ignored?
--   write your documents!
-
-*this list is not all complete, but this is what I had to do.
-Use this repo as a reference and you will figure it out... you clever human!*
 
 ## License
 
