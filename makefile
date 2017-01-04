@@ -1,6 +1,6 @@
 # makefile for all documentation
 # ignore the following directories:
-ignore = mexdown shared output
+ignore = mexdown shared output shippable
 
 ###########################
 # mexdown global makefile #
