@@ -10,7 +10,6 @@ services:
 
 env:
     matrix:
-        - DISTRO=fedora23
         - DISTRO=fedora24
         - DISTRO=fedora25
     global:

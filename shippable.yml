@@ -6,7 +6,7 @@ integrations:
       on_failure: always
 
 env:
-    - DISTRO=fedora23
+    - DISTRO=latest
     - DISTRO=fedora24
     - DISTRO=fedora25
 
