@@ -18,5 +18,5 @@ build:
     ci:
         - sudo ./mexdown/install_latex.sh YES
         - make all
-        - make copy OUT=mexdown-out
-        - ls -l mexdown_out
+        - make copy OUT=~/mexdown_out
+        - ls -l ~/mexdown_out
